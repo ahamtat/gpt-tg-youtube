@@ -4,6 +4,7 @@ import config from "config";
 
 const bot = new Telegraf(config.get("TELEGRAM_TOKEN"));
 
+// processing voice messages
 bot.on(message("voice"), async (ctx) => {
     await ctx.reply(JSON.stringify(ctx.message.voice, null, 2));
 });
