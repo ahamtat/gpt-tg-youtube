@@ -4,6 +4,7 @@ import { code } from "telegraf/format";
 import config from "config";
 import { ogg } from "./ogg.js"
 import { openai } from "./openai.js";
+import { textConverter } from "./text.js";
 
 const INITIAL_SESSION = {
     messages: [],
@@ -45,7 +46,9 @@ bot.on(message("voice"), async (ctx) => {
             content: response.content
         });
 
-        await ctx.reply(response.content);
+        const source = await textConverter.textToSpeech(response.content);
+
+        await ctx.replyWithAudio({ source }, { title: 'Response from assistant', performer: 'ChatGPT' });
 
     } catch (error) {
         console.error("error while voice message: ", error.message);
