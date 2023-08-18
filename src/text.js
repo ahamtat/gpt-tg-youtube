@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 class TextConverter {
     async getToken() {
         const key = JSON.parse(
-            readFileSync(resolve(__dirname, '../inspired-aria-395906-24f2da6e7c3f.json'), 'utf-8')
+            readFileSync(resolve(__dirname, '../google-creds.json'), 'utf-8')
         )
 
         const token = jwt.sign(

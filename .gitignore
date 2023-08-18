@@ -134,3 +134,6 @@ dist
 config/*
 
 voices/*
+
+google-creds.json
+
